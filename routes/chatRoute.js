@@ -1,18 +1,1 @@
-const { json } = require("express");
-const express = require("express");
-const { isLoggedIn } = require("../middleware");
-const router = express.Router();
-const Chat = require('../models/chat')
-
-router.get('/messages',isLoggedIn,(req,res)=>{
-    res.render("chatPage",{user:req.user});
-})
-
-
-router.get('/allmessages',async (req,res)=>{
-     const allMsgs = await Chat.find({});
-     res.json(allMsgs);
-})
-
-
-module.exports = router;
+const{json:json}=require("express"),express=require("express"),{isLoggedIn:isLoggedIn}=require("../middleware"),router=express.Router(),Chat=require("../models/chat");router.get("/messages",isLoggedIn,(e,r)=>{r.render("chatPage",{user:e.user})}),router.get("/allmessages",async(e,r)=>{const s=await Chat.find({});r.json(s)}),module.exports=router;
